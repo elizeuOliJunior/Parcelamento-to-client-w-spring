@@ -1,0 +1,6 @@
+src/main/java - Armazenamento de classes java do projeto (padrao de pastas definido pelo maven)
+
+src/main/resourses - Arquivos de recursos, configuracoes, templates etc...
+
+src/test - classes de teste
+
