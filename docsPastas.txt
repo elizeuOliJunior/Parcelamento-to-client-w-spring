@@ -4,3 +4,16 @@ src/main/resourses - Arquivos de recursos, configuracoes, templates etc...
 
 src/test - classes de teste
 
+pom.xml - informacoes e configuracoes do projeto usadas pelo maven (coracao do projeto mavem)
+
+criar classe responsavel para receber requisicoes http de recursos/clientes (controler)
+	para que essa classe funcione, é necessario mapear a classe passando 2 anotacoes do spring (GetMapping dentro da classe, RestContent fora 	da classe ) - endpoint client
+
+classe para representar o nosso cliente - src/main/java/com.elizeu.awpag/domain.model - modelo de dominio armazena as classes responsaveis por guardar tudo aquilo que possui uma representacao do mundo real "entidades" - creating client Entity Class
+	
+
+configurar o proj para recarregar alteracoes em java de forma automatica -- aplicating devtools
+
+###
+vid 1 aula 2 - 4:30
+https://drive.google.com/drive/folders/1QJAjD7Jvhgjb3IzVuCTvgcyGrocDOkSa
