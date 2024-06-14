@@ -2,8 +2,10 @@ package com.elizeu.awpag.api.controller;
 
 import com.elizeu.awpag.domain.model.Cliente;
 import com.elizeu.awpag.domain.repository.ClienteRepository;
+import com.elizeu.awpag.domain.service.CadastroClienteService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ import java.util.Optional;
 @RequestMapping("/clientes")
 public class ClienteController {
 
+    private final CadastroClienteService cadastroClienteService;
+
     private final ClienteRepository clienteRepository;
 
     @GetMapping
@@ -29,6 +33,7 @@ public class ClienteController {
         return clienteRepository.findAll();
     }
 
+    //metodo http get, pesquisa por clientes no banco de dados
     @GetMapping("/{clienteId}")
     public ResponseEntity<Cliente> buscar(@PathVariable Long clienteId) {
         Optional<Cliente> cliente = clienteRepository.findById(clienteId);
@@ -39,13 +44,18 @@ public class ClienteController {
             return ResponseEntity.notFound().build();
 
     }
+
+    //metodo http, criar um novo cliente
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Cliente adicionar (@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public Cliente adicionar (@Valid @RequestBody Cliente cliente) {
+        return cadastroClienteService.salvar(cliente);
     }
+
+    //metodo http put para atualizar dados de clientes ja existentes pelo id
     @PutMapping("/{clienteId}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long clienteId, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long clienteId,
+                                             @Valid @RequestBody Cliente cliente) {
         if (!clienteRepository.existsById(clienteId)) {
             return ResponseEntity.notFound().build();
         }
@@ -56,6 +66,8 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
+
+    //metodo http delete para remover clientes do banco de dados
     @DeleteMapping("/{clienteId}")
     public ResponseEntity<Void> excluir(@PathVariable Long clienteId){
 
