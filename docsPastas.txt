@@ -14,6 +14,9 @@ classe para representar o nosso cliente - src/main/java/com.elizeu.awpag/domain.
 
 configurar o proj para recarregar alteracoes em java de forma automatica -- aplicating devtools
 
-###
-vid 1 aula 2 - 4:30
-https://drive.google.com/drive/folders/1QJAjD7Jvhgjb3IzVuCTvgcyGrocDOkSa
+--mapeamento da classe java cliente para tabela cliente 
+
+--atualizando controller cliente para retornar dados do bd 
+
+--criando componente de acesso aos dados (interface) com jacarta 
+3;50
